@@ -1,7 +1,5 @@
 package br.com.interbootcamp.businesscard.ui
 
-import android.app.Application
-import android.content.AbstractThreadedSyncAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +9,7 @@ import br.com.interbootcamp.businesscard.databinding.ActivityMainBinding
 import br.com.interbootcamp.businesscard.ui.adapter.BusinessCardAdapter
 import br.com.interbootcamp.businesscard.ui.viewmodel.MainViewModel
 import br.com.interbootcamp.businesscard.ui.viewmodel.MainViewModelFactory
+import br.com.interbootcamp.businesscard.utils.Image
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         binding.fabMain.setOnClickListener {
             val intent = Intent(this, AddBusinessCardActivity::class.java)
             startActivity(intent)
+        }
+        adapter.listenerShare = {
+            Image.share(this, it)
         }
     }
 
