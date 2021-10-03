@@ -1,6 +1,5 @@
 package br.com.interbootcamp.businesscard.ui.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,7 @@ class BusinessCardAdapter : ListAdapter<BusinessCard, BusinessCardAdapter.ViewHo
             binding.tvPhoneCard.text = item.phone
             binding.tvEmailCard.text = item.email
             binding.tvCompanyNameCard.text = item.company
-            binding.cvContent.setCardBackgroundColor(Color.parseColor(item.backgroundColor))
+            binding.cvContent.setCardBackgroundColor(item.backgroundColor)
 
             binding.cvContent.setOnClickListener {
                 listenerShare(it)

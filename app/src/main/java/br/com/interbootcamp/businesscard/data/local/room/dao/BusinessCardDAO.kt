@@ -7,7 +7,6 @@ import androidx.room.Query
 import br.com.interbootcamp.businesscard.data.local.room.entity.BusinessCard
 import kotlinx.coroutines.flow.Flow
 
-
 @Dao
 interface BusinessCardDAO {
 

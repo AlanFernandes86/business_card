@@ -1,22 +1,39 @@
 package br.com.interbootcamp.businesscard.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
+import androidx.lifecycle.*
 import br.com.interbootcamp.businesscard.data.local.room.entity.BusinessCard
 import br.com.interbootcamp.businesscard.data.repository.BusinessCardRepository
 import java.lang.IllegalArgumentException
+import java.util.*
 
 class MainViewModel(private val businessCardRepository: BusinessCardRepository) : ViewModel() {
 
+    private  var mBusinessCard = BusinessCard()
 
-    fun insert(businessCard: BusinessCard) {
-        businessCardRepository.insert(businessCard)
+    fun insert() {
+        businessCardRepository.insert(mBusinessCard)
     }
 
     fun getAll(): LiveData<List<BusinessCard>> {
         return businessCardRepository.getAll().asLiveData()
+    }
+
+    fun setBusinessCard(businessCard: BusinessCard) : Boolean {
+        var validated = false
+        if (mBusinessCard.backgroundColor != 0){
+            mBusinessCard.apply {
+                name = businessCard.name
+                phone = businessCard.phone
+                email = businessCard.email
+                company = businessCard.company
+            }
+            validated = true
+        }
+        return validated
+    }
+
+    fun setCardBackgroundColor(color: Int) {
+            mBusinessCard.backgroundColor = color
     }
 
 }
